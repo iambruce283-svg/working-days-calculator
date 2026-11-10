@@ -390,4 +390,313 @@
                         <span>How does the calculator account for weekend shifts and public holidays?</span>
                         <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-3 pt-3 border-t border-zinc-100
+                    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800 leading-relaxed">
+                        The calculation engine cross-references each day between your start and end dates against the selected country's statutory holiday calendar. If a public holiday falls on a weekend, in-lieu rollover rules are applied according to national labor law.
+                    </p>
+                </details>
+
+                <details class="glass-card p-4 rounded-xl cursor-pointer group">
+                    <summary class="font-bold text-xs sm:text-sm text-zinc-900 dark:text-white flex justify-between items-center list-none">
+                        <span>Can I calculate business days across different countries?</span>
+                        <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800 leading-relaxed">
+                        Yes, use the jurisdiction dropdown to switch between verified calendar rules for Pakistan, United States, United Kingdom, Canada, Australia, UAE, Saudi Arabia, and India.
+                    </p>
+                </details>
+
+                <details class="glass-card p-4 rounded-xl cursor-pointer group">
+                    <summary class="font-bold text-xs sm:text-sm text-zinc-900 dark:text-white flex justify-between items-center list-none">
+                        <span>Can I configure custom 4-day workweeks or Friday-Saturday weekends?</span>
+                        <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800 leading-relaxed">
+                        Yes, simply click on the "Weekend Days" pills (Sun–Sat) to select or deselect any day. For example, toggle Friday & Saturday for Middle Eastern corporate schedules.
+                    </p>
+                </details>
+
+                <details class="glass-card p-4 rounded-xl cursor-pointer group">
+                    <summary class="font-bold text-xs sm:text-sm text-zinc-900 dark:text-white flex justify-between items-center list-none">
+                        <span>What is the difference between including and excluding the end date?</span>
+                        <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800 leading-relaxed">
+                        Including the end date treats both the starting day and finishing day as full active working days. If unchecked, the count measures strictly the duration elapsed between the two dates.
+                    </p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- Detailed Footer -->
+    <footer class="mt-20 border-t border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-950 py-12 text-xs text-zinc-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <span class="font-bold text-zinc-900 dark:text-white uppercase tracking-wider block mb-3">Calculators</span>
+                <ul class="space-y-2">
+                    <li><a href="#calculator" class="hover:text-indigo-600">Business Days Calculator</a></li>
+                    <li><a href="#calculator" class="hover:text-indigo-600">Add Working Days</a></li>
+                    <li><a href="#calculator" class="hover:text-indigo-600">Working Hours (8h/Day)</a></li>
+                </ul>
+            </div>
+            <div>
+                <span class="font-bold text-zinc-900 dark:text-white uppercase tracking-wider block mb-3">Calendars</span>
+                <ul class="space-y-2">
+                    <li><a href="#calculator" class="hover:text-indigo-600">Pakistan Federal Holidays</a></li>
+                    <li><a href="#calculator" class="hover:text-indigo-600">US Federal Reserve Schedule</a></li>
+                    <li><a href="#calculator" class="hover:text-indigo-600">UK Bank Holidays</a></li>
+                </ul>
+            </div>
+            <div>
+                <span class="font-bold text-zinc-900 dark:text-white uppercase tracking-wider block mb-3">Guides</span>
+                <ul class="space-y-2">
+                    <li><a href="#guide" class="hover:text-indigo-600">Excel NETWORKDAYS Guide</a></li>
+                    <li><a href="#guide" class="hover:text-indigo-600">In-Lieu Holiday Rules</a></li>
+                    <li><a href="#guide" class="hover:text-indigo-600">Payroll Calculation Methods</a></li>
+                </ul>
+            </div>
+            <div>
+                <span class="font-bold text-zinc-900 dark:text-white uppercase tracking-wider block mb-3">About</span>
+                <ul class="space-y-2">
+                    <li><a href="#calculator" class="hover:text-indigo-600">About WorkingDaysCalculator</a></li>
+                    <li><a href="#calculator" class="hover:text-indigo-600">Privacy & Terms</a></li>
+                    <li><a href="#calculator" class="hover:text-indigo-600">Free Utility Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-center">
+            <p>© 2026 Working Days Calculator. All calculations provided for standard corporate reference.</p>
+        </div>
+    </footer>
+
+    <!-- Integrated JavaScript Engine -->
+    <script>
+        const HOLIDAY_DATABASE = {
+            pk: [
+                { name: "New Year Bank Holiday", date: "01-01" },
+                { name: "Kashmir Solidarity Day", date: "02-05" },
+                { name: "Pakistan Day", date: "03-23" },
+                { name: "Labour Day", date: "05-01" },
+                { name: "Bank Holiday (Mid-Year)", date: "07-01" },
+                { name: "Independence Day", date: "08-14" },
+                { name: "Iqbal Day", date: "11-09" },
+                { name: "Quaid-e-Azam Day / Christmas", date: "12-25" },
+                { name: "Eid ul-Fitr Day 1", fullDate: "2026-03-20" },
+                { name: "Eid ul-Fitr Day 2", fullDate: "2026-03-21" },
+                { name: "Eid ul-Fitr Day 3", fullDate: "2026-03-22" },
+                { name: "Eid ul-Adha Day 1", fullDate: "2026-05-27" },
+                { name: "Eid ul-Adha Day 2", fullDate: "2026-05-28" },
+                { name: "Eid ul-Adha Day 3", fullDate: "2026-05-29" },
+                { name: "Ashura (9th Muharram)", fullDate: "2026-06-24" },
+                { name: "Ashura (10th Muharram)", fullDate: "2026-06-25" },
+                { name: "Eid Milad-un-Nabi", fullDate: "2026-08-25" }
+            ],
+            us: [
+                { name: "New Year's Day", date: "01-01" },
+                { name: "Juneteenth", date: "06-19" },
+                { name: "Independence Day", date: "07-04" },
+                { name: "Veterans Day", date: "11-11" },
+                { name: "Christmas Day", date: "12-25" }
+            ],
+            uk: [
+                { name: "New Year's Day", date: "01-01" },
+                { name: "Christmas Day", date: "12-25" },
+                { name: "Boxing Day", date: "12-26" }
+            ],
+            ca: [
+                { name: "New Year's Day", date: "01-01" },
+                { name: "Canada Day", date: "07-01" },
+                { name: "Remembrance Day", date: "11-11" },
+                { name: "Christmas Day", date: "12-25" }
+            ],
+            au: [
+                { name: "New Year's Day", date: "01-01" },
+                { name: "Australia Day", date: "01-26" },
+                { name: "Anzac Day", date: "04-25" },
+                { name: "Christmas Day", date: "12-25" }
+            ],
+            ae: [
+                { name: "New Year's Day", date: "01-01" },
+                { name: "Commemoration Day", date: "12-01" },
+                { name: "National Day 1", date: "12-02" },
+                { name: "National Day 2", date: "12-03" }
+            ],
+            sa: [
+                { name: "Founding Day", date: "02-22" },
+                { name: "National Day", date: "09-23" }
+            ],
+            in: [
+                { name: "Republic Day", date: "01-26" },
+                { name: "Independence Day", date: "08-15" },
+                { name: "Gandhi Jayanti", date: "10-02" },
+                { name: "Christmas Day", date: "12-25" }
+            ],
+            none: []
+        };
+
+        let currentMode = 'between';
+        let weekendDays = new Set([0, 6]);
+
+        function init() {
+            const today = new Date();
+            const nextMonth = new Date();
+            nextMonth.setDate(today.getDate() + 30);
+
+            document.getElementById('startDate').value = today.toISOString().split('T')[0];
+            document.getElementById('endDate').value = nextMonth.toISOString().split('T')[0];
+
+            updateWeekendPills();
+            calculate();
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons[0].classList.toggle('active', mode === 'between');
+            tabButtons[1].classList.toggle('active', mode === 'add');
+
+            document.getElementById('endDateWrapper').classList.toggle('hidden', mode === 'add');
+            document.getElementById('addDaysWrapper').classList.toggle('hidden', mode === 'between');
+            document.getElementById('targetDateDisplay').classList.toggle('hidden', mode === 'between');
+
+            calculate();
+        }
+
+        function toggleWeekend(day, el) {
+            if (weekendDays.has(day)) {
+                weekendDays.delete(day);
+            } else {
+                weekendDays.add(day);
+            }
+            updateWeekendPills();
+            calculate();
+        }
+
+        function updateWeekendPills() {
+            document.querySelectorAll('#weekendSelector .preset-pill').forEach(pill => {
+                const day = parseInt(pill.getAttribute('data-day'));
+                if (weekendDays.has(day)) {
+                    pill.className = 'preset-pill active bg-indigo-600 border-indigo-600 text-white font-semibold';
+                } else {
+                    pill.className = 'preset-pill border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300';
+                }
+            });
+        }
+
+        function isHoliday(date, countryCode) {
+            const list = HOLIDAY_DATABASE[countryCode] || [];
+            const mmDd = ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+            const yyyyMmDd = date.toISOString().split('T')[0];
+
+            return list.find(h => h.fullDate === yyyyMmDd || h.date === mmDd);
+        }
+
+        function calculate() {
+            const country = document.getElementById('countrySelect').value;
+            const startVal = document.getElementById('startDate').value;
+            const includeEnd = document.getElementById('includeEnd').checked;
+            const checkHolidays = document.getElementById('excludeHolidays').checked;
+
+            if (!startVal) return;
+
+            const start = new Date(startVal + 'T00:00:00');
+
+            if (currentMode === 'between') {
+                const endVal = document.getElementById('endDate').value;
+                if (!endVal) return;
+                const end = new Date(endVal + 'T00:00:00');
+
+                if (start > end) {
+                    alert("Start date must be before End date");
+                    return;
+                }
+
+                let cur = new Date(start);
+                let workingDays = 0;
+                let weekends = 0;
+                let holidays = 0;
+                let calendarDays = 0;
+                let foundHolidays = [];
+
+                while (includeEnd ? cur <= end : cur < end) {
+                    calendarDays++;
+                    const day = cur.getDay();
+                    const hol = checkHolidays ? isHoliday(cur, country) : null;
+
+                    if (weekendDays.has(day)) {
+                        weekends++;
+                    } else if (hol) {
+                        holidays++;
+                        foundHolidays.push(`${cur.toISOString().split('T')[0]} - ${hol.name}`);
+                    } else {
+                        workingDays++;
+                    }
+
+                    cur.setDate(cur.getDate() + 1);
+                }
+
+                document.getElementById('kpiWorkingDays').innerText = workingDays;
+                document.getElementById('kpiHours').innerText = `Equivalent to ${workingDays * 8} business hours (8h standard)`;
+                document.getElementById('statCalendarDays').innerText = calendarDays;
+                document.getElementById('statWeekendDays').innerText = weekends;
+                document.getElementById('statHolidays').innerText = holidays;
+
+                const holListEl = document.getElementById('holidaysList');
+                document.getElementById('holidaysCountBadge').innerText = `${foundHolidays.length} found`;
+                if (foundHolidays.length === 0) {
+                    holListEl.innerHTML = '<li class="italic text-zinc-400">No public holidays fall within this date range.</li>';
+                } else {
+                    holListEl.innerHTML = foundHolidays.map(h => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>${h}</li>`).join('');
+                }
+            } else {
+                const daysToAdd = parseInt(document.getElementById('daysCount').value) || 0;
+                let count = 0;
+                let cur = new Date(start);
+                let weekends = 0;
+                let holidays = 0;
+                let calendarDays = 0;
+                let foundHolidays = [];
+                const step = daysToAdd >= 0 ? 1 : -1;
+                const target = Math.abs(daysToAdd);
+
+                while (count < target) {
+                    cur.setDate(cur.getDate() + step);
+                    calendarDays++;
+                    const day = cur.getDay();
+                    const hol = checkHolidays ? isHoliday(cur, country) : null;
+
+                    if (weekendDays.has(day)) {
+                        weekends++;
+                    } else if (hol) {
+                        holidays++;
+                        foundHolidays.push(`${cur.toISOString().split('T')[0]} - ${hol.name}`);
+                    } else {
+                        count++;
+                    }
+                }
+
+                document.getElementById('kpiWorkingDays').innerText = target;
+                document.getElementById('kpiHours').innerText = `Total calculated for ${target} days`;
+                document.getElementById('targetDateValue').innerText = cur.toDateString();
+                document.getElementById('statCalendarDays').innerText = calendarDays;
+                document.getElementById('statWeekendDays').innerText = weekends;
+                document.getElementById('statHolidays').innerText = holidays;
+
+                const holListEl = document.getElementById('holidaysList');
+                document.getElementById('holidaysCountBadge').innerText = `${foundHolidays.length} found`;
+                if (foundHolidays.length === 0) {
+                    holListEl.innerHTML = '<li class="italic text-zinc-400">No public holidays encountered.</li>';
+                } else {
+                    holListEl.innerHTML = foundHolidays.map(h => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>${h}</li>`).join('');
+                }
+            }
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        window.onload = init;
+    </script>
+</body>
+</html>
