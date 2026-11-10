@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Working Days Calculator | Free Business Day Tool</title>
-    <!-- Tailwind CDN for standard utility classes matching the original design -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,7 +18,6 @@
         }
     </script>
     <style>
-        /* Base fallback styles */
         body {
             font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
@@ -58,6 +56,9 @@
             background-color: #27272a;
             color: #818cf8;
         }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col bg-[#F8FAFC] dark:bg-[#090D16] text-zinc-900 dark:text-zinc-100 transition-colors">
@@ -69,7 +70,6 @@
     <header class="sticky top-0 z-50 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl border-b border-zinc-200/80 dark:border-white/[0.08]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-[1px] shadow-sm shadow-indigo-500/20">
                         <div class="w-full h-full bg-white dark:bg-zinc-950 rounded-[11px] flex items-center justify-center">
@@ -91,7 +91,14 @@
                     </div>
                 </div>
 
-                <!-- Right Controls: Theme Toggle -->
+                <!-- Nav Links -->
+                <nav class="hidden md:flex items-center space-x-1 p-1 bg-zinc-100/70 dark:bg-zinc-900/70 border border-zinc-200/60 dark:border-white/[0.08] rounded-full text-xs font-medium">
+                    <a href="#calculator" class="px-3.5 py-1.5 rounded-full bg-white dark:bg-zinc-800 text-indigo-600 dark:text-indigo-300 shadow-sm border border-zinc-200/50 dark:border-white/[0.08]">🧮 Calculator</a>
+                    <a href="#categories" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">Guides & Rules</a>
+                    <a href="#guide" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">About Calculation</a>
+                    <a href="#faq" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">FAQ</a>
+                </nav>
+
                 <div class="flex items-center gap-3">
                     <button id="themeToggle" class="p-2.5 rounded-xl border border-zinc-200/80 dark:border-white/[0.08] bg-white/70 dark:bg-zinc-900/70 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors" aria-label="Toggle theme">
                         <svg id="moonIcon" class="w-4 h-4 hidden dark:block text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,7 +114,7 @@
     </header>
 
     <!-- Main Workspace -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12" id="calculator">
         <!-- Title Badge -->
         <div class="text-center sm:text-left mb-8">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 text-xs font-semibold border border-indigo-500/20 mb-3">
@@ -124,10 +131,10 @@
             </p>
         </div>
 
-        <!-- Calculator Card & Layout Grid -->
+        <!-- Calculator Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- Left Panel: Configuration Form -->
+            <!-- Left Form Panel -->
             <div class="lg:col-span-7 glass-card p-6 sm:p-8 space-y-6">
                 <!-- Mode Tabs -->
                 <div class="flex p-1 bg-zinc-100 dark:bg-zinc-800/60 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-400">
@@ -154,7 +161,7 @@
                 </div>
 
                 <!-- Date Inputs Container -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="datesContainer">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
                             Start Date
@@ -212,15 +219,13 @@
                     </div>
                 </div>
 
-                <!-- Calculate CTA Button -->
                 <button onclick="calculate()" class="w-full py-3.5 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-[0.99] text-white font-semibold text-sm shadow-md shadow-indigo-500/25 transition-all">
                     Recalculate Business Days
                 </button>
             </div>
 
-            <!-- Right Panel: Results & Breakdown -->
+            <!-- Right Results Panel -->
             <div class="lg:col-span-5 space-y-6">
-                <!-- Main KPI Card -->
                 <div class="glass-card p-6 sm:p-8 text-center relative overflow-hidden">
                     <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -234,14 +239,12 @@
                         Equivalent to 0 business hours (8h standard)
                     </p>
 
-                    <!-- Target Date Display for Add/Subtract Mode -->
                     <div id="targetDateDisplay" class="hidden mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
                         <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Target Completion Date</span>
                         <div class="text-lg font-bold text-zinc-800 dark:text-zinc-100 mt-1" id="targetDateValue">-</div>
                     </div>
                 </div>
 
-                <!-- Stats Summary Matrix -->
                 <div class="grid grid-cols-3 gap-3">
                     <div class="glass-card p-3.5 text-center">
                         <span class="block text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase">Calendar</span>
@@ -257,7 +260,6 @@
                     </div>
                 </div>
 
-                <!-- Observed Holidays List -->
                 <div class="glass-card p-5">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
@@ -271,249 +273,121 @@
                 </div>
             </div>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="mt-auto border-t border-zinc-200/80 dark:border-zinc-800 py-6 text-center text-xs text-zinc-500">
-        <p>© 2026 Working Days Calculator. Complete Business Calendar Utility.</p>
-    </footer>
+        <!-- Section 1: Explore Categories -->
+        <section class="mt-20 pt-10 border-t border-zinc-200/80 dark:border-zinc-800" id="categories">
+            <h2 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">Explore Working Days & Public Holiday Rules</h2>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-6">Browse jurisdiction legal guides, bank rollover policies, and international holiday tables.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-xl mb-4">🏛️</div>
+                        <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Public Holidays & Bank Rules</h3>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">Official rules on bank holidays, statutory leaves, in-lieu weekend adjustments, and global compliance standards.</p>
+                    </div>
+                    <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mt-4 inline-flex items-center gap-1">Read Rules →</span>
+                </div>
 
-    <!-- Integrated JavaScript Engine -->
-    <script>
-        // Preset Holidays Data for high accuracy
-        const HOLIDAY_DATABASE = {
-            pk: [
-                { name: "New Year Bank Holiday", date: "01-01" },
-                { name: "Kashmir Solidarity Day", date: "02-05" },
-                { name: "Pakistan Day", date: "03-23" },
-                { name: "Labour Day", date: "05-01" },
-                { name: "Bank Holiday (Mid-Year)", date: "07-01" },
-                { name: "Independence Day", date: "08-14" },
-                { name: "Iqbal Day", date: "11-09" },
-                { name: "Quaid-e-Azam Day / Christmas", date: "12-25" },
-                // 2026 Islamic calendar verified dates
-                { name: "Eid ul-Fitr Day 1", fullDate: "2026-03-20" },
-                { name: "Eid ul-Fitr Day 2", fullDate: "2026-03-21" },
-                { name: "Eid ul-Fitr Day 3", fullDate: "2026-03-22" },
-                { name: "Eid ul-Adha Day 1", fullDate: "2026-05-27" },
-                { name: "Eid ul-Adha Day 2", fullDate: "2026-05-28" },
-                { name: "Eid ul-Adha Day 3", fullDate: "2026-05-29" },
-                { name: "Ashura (9th Muharram)", fullDate: "2026-06-24" },
-                { name: "Ashura (10th Muharram)", fullDate: "2026-06-25" },
-                { name: "Eid Milad-un-Nabi", fullDate: "2026-08-25" }
-            ],
-            us: [
-                { name: "New Year's Day", date: "01-01" },
-                { name: "Juneteenth", date: "06-19" },
-                { name: "Independence Day", date: "07-04" },
-                { name: "Veterans Day", date: "11-11" },
-                { name: "Christmas Day", date: "12-25" }
-            ],
-            uk: [
-                { name: "New Year's Day", date: "01-01" },
-                { name: "Christmas Day", date: "12-25" },
-                { name: "Boxing Day", date: "12-26" }
-            ],
-            ca: [
-                { name: "New Year's Day", date: "01-01" },
-                { name: "Canada Day", date: "07-01" },
-                { name: "Remembrance Day", date: "11-11" },
-                { name: "Christmas Day", date: "12-25" }
-            ],
-            au: [
-                { name: "New Year's Day", date: "01-01" },
-                { name: "Australia Day", date: "01-26" },
-                { name: "Anzac Day", date: "04-25" },
-                { name: "Christmas Day", date: "12-25" }
-            ],
-            ae: [
-                { name: "New Year's Day", date: "01-01" },
-                { name: "Commemoration Day", date: "12-01" },
-                { name: "National Day 1", date: "12-02" },
-                { name: "National Day 2", date: "12-03" }
-            ],
-            sa: [
-                { name: "Founding Day", date: "02-22" },
-                { name: "National Day", date: "09-23" }
-            ],
-            in: [
-                { name: "Republic Day", date: "01-26" },
-                { name: "Independence Day", date: "08-15" },
-                { name: "Gandhi Jayanti", date: "10-02" },
-                { name: "Christmas Day", date: "12-25" }
-            ],
-            none: []
-        };
+                <div class="glass-card p-6 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-xl mb-4">📦</div>
+                        <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Deadlines & Shipping Calculations</h3>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">Calculate exact lead times, shipping estimates, SLA schedules, and operational freight business days.</p>
+                    </div>
+                    <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mt-4 inline-flex items-center gap-1">Explore Shipping →</span>
+                </div>
 
-        let currentMode = 'between';
-        let weekendDays = new Set([0, 6]); // Default Saturday & Sunday
+                <div class="glass-card p-6 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-xl mb-4">📊</div>
+                        <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Annual Data & Math Fundamentals</h3>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">Formulas for net working days, annual work hours, leap year impact, and payroll allocation tables.</p>
+                    </div>
+                    <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mt-4 inline-flex items-center gap-1">View Formulas →</span>
+                </div>
+            </div>
+        </section>
 
-        // Initialize Defaults
-        function init() {
-            const today = new Date();
-            const nextMonth = new Date();
-            nextMonth.setDate(today.getDate() + 30);
+        <!-- Section 2: Featured Guides & Articles -->
+        <section class="mt-16">
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-zinc-900 dark:text-white mb-1">Featured Calculation Guides & Articles</h2>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400">Step-by-step practical references for project managers, payroll leads, and operations teams.</p>
+                </div>
+            </div>
 
-            document.getElementById('startDate').value = today.toISOString().split('T')[0];
-            document.getElementById('endDate').value = nextMonth.toISOString().split('T')[0];
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card p-4 hover:border-indigo-400 transition-colors">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Spreadsheet Guide</span>
+                    <h3 class="font-bold text-xs text-zinc-900 dark:text-white mt-1 mb-2 line-clamp-2">How to Calculate Business Days in Excel & Google Sheets</h3>
+                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 line-clamp-2">Complete tutorial using NETWORKDAYS.INTL and custom weekend formulas.</p>
+                </div>
 
-            updateWeekendPills();
-            calculate();
-        }
+                <div class="glass-card p-4 hover:border-indigo-400 transition-colors">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Jurisdiction</span>
+                    <h3 class="font-bold text-xs text-zinc-900 dark:text-white mt-1 mb-2 line-clamp-2">Federal vs State Bank Holiday Rules Explained</h3>
+                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 line-clamp-2">Understanding when banks close and how mandatory rollover days are scheduled.</p>
+                </div>
 
-        function setMode(mode) {
-            currentMode = mode;
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            tabButtons[0].classList.toggle('active', mode === 'between');
-            tabButtons[1].classList.toggle('active', mode === 'add');
+                <div class="glass-card p-4 hover:border-indigo-400 transition-colors">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Operations</span>
+                    <h3 class="font-bold text-xs text-zinc-900 dark:text-white mt-1 mb-2 line-clamp-2">Setting Up a 4-Day Workweek Calculation Standard</h3>
+                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 line-clamp-2">Adjusting corporate SLAs and delivery timers for Monday–Thursday schedules.</p>
+                </div>
 
-            document.getElementById('endDateWrapper').classList.toggle('hidden', mode === 'add');
-            document.getElementById('addDaysWrapper').classList.toggle('hidden', mode === 'between');
-            document.getElementById('targetDateDisplay').classList.toggle('hidden', mode === 'between');
+                <div class="glass-card p-4 hover:border-indigo-400 transition-colors">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Payroll</span>
+                    <h3 class="font-bold text-xs text-zinc-900 dark:text-white mt-1 mb-2 line-clamp-2">Net Work Hours vs Gross Calendar Hours Matrix</h3>
+                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 line-clamp-2">Eliminating billing discrepancies across monthly and bi-weekly payroll cycles.</p>
+                </div>
+            </div>
+        </section>
 
-            calculate();
-        }
+        <!-- Section 3: Comprehensive Text Guide -->
+        <article class="mt-16 glass-card p-8 sm:p-10 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 space-y-6 leading-relaxed" id="guide">
+            <h2 class="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white">
+                Understanding Working Days: Complete Guide to Business Day Calculation
+            </h2>
+            <p>
+                In commercial contracts, sprint planning, and international logistics, measuring time by calendar days is often misleading. A standard year contains 365 or 366 days, but only 250 to 260 of those count as actual working days depending on jurisdiction-specific statutory holidays and local weekend shifts.
+            </p>
 
-        function toggleWeekend(day, el) {
-            if (weekendDays.has(day)) {
-                weekendDays.delete(day);
-            } else {
-                weekendDays.add(day);
-            }
-            updateWeekendPills();
-            calculate();
-        }
+            <h3 class="text-base font-bold text-zinc-900 dark:text-white pt-2">1. Working Days vs. Calendar Days: Key Differences</h3>
+            <p>
+                A <strong>Calendar Day</strong> includes every official 24-hour period (Monday through Sunday) regardless of business activity. In contrast, a <strong>Working Day (or Business Day)</strong> refers specifically to any day on which corporate commerce, financial institutions, and government offices operate under regular working hours.
+            </p>
 
-        function updateWeekendPills() {
-            document.querySelectorAll('#weekendSelector .preset-pill').forEach(pill => {
-                const day = parseInt(pill.getAttribute('data-day'));
-                if (weekendDays.has(day)) {
-                    pill.className = 'preset-pill active bg-indigo-600 border-indigo-600 text-white font-semibold';
-                } else {
-                    pill.className = 'preset-pill border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300';
-                }
-            });
-        }
+            <h3 class="text-base font-bold text-zinc-900 dark:text-white pt-2">2. The Mathematical Formula for Calculating Working Days</h3>
+            <div class="bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl font-mono text-xs border border-zinc-200 dark:border-zinc-800 text-indigo-600 dark:text-indigo-400">
+                Net Working Days = Total Calendar Days - Weekend Days - Public Holidays - Custom Excluded Days
+            </div>
 
-        function isHoliday(date, countryCode) {
-            const list = HOLIDAY_DATABASE[countryCode] || [];
-            const mmDd = ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
-            const yyyyMmDd = date.toISOString().split('T')[0];
+            <h3 class="text-base font-bold text-zinc-900 dark:text-white pt-2">3. Essential Real-World Applications</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Payroll & Wage Accounting:</strong> Computing accurate pro-rata salary deductions, daily allowances, and billable client hours based on standard 8-hour days.</li>
+                <li><strong>Project Delivery & Sprints:</strong> Accurately projecting agile software release dates without missing delivery windows due to mid-week public holidays.</li>
+                <li><strong>Supply Chain & Freight Timelines:</strong> Courier networks (DHL, FedEx, UPS) estimate dispatch delivery times using strict business day transit windows.</li>
+            </ul>
 
-            return list.find(h => h.fullDate === yyyyMmDd || h.date === mmDd);
-        }
+            <h3 class="text-base font-bold text-zinc-900 dark:text-white pt-2">4. International Holiday Observance & "In-Lieu" Rules</h3>
+            <p>
+                When a statutory public holiday falls on a Saturday or Sunday, many jurisdictions declare the following Monday an official day off in-lieu. Our calculation engine automatically applies these territorial rollover laws for verified calendars.
+            </p>
+        </article>
 
-        function calculate() {
-            const country = document.getElementById('countrySelect').value;
-            const startVal = document.getElementById('startDate').value;
-            const includeEnd = document.getElementById('includeEnd').checked;
-            const checkHolidays = document.getElementById('excludeHolidays').checked;
+        <!-- Section 4: FAQ Accordion -->
+        <section class="mt-16 max-w-4xl mx-auto" id="faq">
+            <div class="text-center mb-8">
+                <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white">Frequently Asked Questions</h2>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Answers to common questions regarding business calendars and day counts.</p>
+            </div>
 
-            if (!startVal) return;
-
-            const start = new Date(startVal + 'T00:00:00');
-
-            if (currentMode === 'between') {
-                const endVal = document.getElementById('endDate').value;
-                if (!endVal) return;
-                const end = new Date(endVal + 'T00:00:00');
-
-                if (start > end) {
-                    alert("Start date must be before End date");
-                    return;
-                }
-
-                let cur = new Date(start);
-                let workingDays = 0;
-                let weekends = 0;
-                let holidays = 0;
-                let calendarDays = 0;
-                let foundHolidays = [];
-
-                while (includeEnd ? cur <= end : cur < end) {
-                    calendarDays++;
-                    const day = cur.getDay();
-                    const hol = checkHolidays ? isHoliday(cur, country) : null;
-
-                    if (weekendDays.has(day)) {
-                        weekends++;
-                    } else if (hol) {
-                        holidays++;
-                        foundHolidays.push(`${cur.toISOString().split('T')[0]} - ${hol.name}`);
-                    } else {
-                        workingDays++;
-                    }
-
-                    cur.setDate(cur.getDate() + 1);
-                }
-
-                // Render Results
-                document.getElementById('kpiWorkingDays').innerText = workingDays;
-                document.getElementById('kpiHours').innerText = `Equivalent to ${workingDays * 8} business hours (8h standard)`;
-                document.getElementById('statCalendarDays').innerText = calendarDays;
-                document.getElementById('statWeekendDays').innerText = weekends;
-                document.getElementById('statHolidays').innerText = holidays;
-
-                // Render Holidays List
-                const holListEl = document.getElementById('holidaysList');
-                document.getElementById('holidaysCountBadge').innerText = `${foundHolidays.length} found`;
-                if (foundHolidays.length === 0) {
-                    holListEl.innerHTML = '<li class="italic text-zinc-400">No public holidays fall within this date range.</li>';
-                } else {
-                    holListEl.innerHTML = foundHolidays.map(h => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>${h}</li>`).join('');
-                }
-            } else {
-                // Add / Subtract Days Mode
-                const daysToAdd = parseInt(document.getElementById('daysCount').value) || 0;
-                let count = 0;
-                let cur = new Date(start);
-                let weekends = 0;
-                let holidays = 0;
-                let calendarDays = 0;
-                let foundHolidays = [];
-                const step = daysToAdd >= 0 ? 1 : -1;
-                const target = Math.abs(daysToAdd);
-
-                while (count < target) {
-                    cur.setDate(cur.getDate() + step);
-                    calendarDays++;
-                    const day = cur.getDay();
-                    const hol = checkHolidays ? isHoliday(cur, country) : null;
-
-                    if (weekendDays.has(day)) {
-                        weekends++;
-                    } else if (hol) {
-                        holidays++;
-                        foundHolidays.push(`${cur.toISOString().split('T')[0]} - ${hol.name}`);
-                    } else {
-                        count++;
-                    }
-                }
-
-                document.getElementById('kpiWorkingDays').innerText = target;
-                document.getElementById('kpiHours').innerText = `Total calculated for ${target} days`;
-                document.getElementById('targetDateValue').innerText = cur.toDateString();
-                document.getElementById('statCalendarDays').innerText = calendarDays;
-                document.getElementById('statWeekendDays').innerText = weekends;
-                document.getElementById('statHolidays').innerText = holidays;
-
-                const holListEl = document.getElementById('holidaysList');
-                document.getElementById('holidaysCountBadge').innerText = `${foundHolidays.length} found`;
-                if (foundHolidays.length === 0) {
-                    holListEl.innerHTML = '<li class="italic text-zinc-400">No public holidays encountered.</li>';
-                } else {
-                    holListEl.innerHTML = foundHolidays.map(h => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>${h}</li>`).join('');
-                }
-            }
-        }
-
-        // Theme Toggle
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
-
-        // Initialize on page load
-        window.onload = init;
-    </script>
-</body>
-</html>
+            <div class="space-y-3">
+                <details class="glass-card p-4 rounded-xl cursor-pointer group">
+                    <summary class="font-bold text-xs sm:text-sm text-zinc-900 dark:text-white flex justify-between items-center list-none">
+                        <span>How does the calculator account for weekend shifts and public holidays?</span>
+                        <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-3 pt-3 border-t border-zinc-100
